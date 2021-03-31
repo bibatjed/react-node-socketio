@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Button from "../components/Button/Button";
 import ChatBox from "../components/ChatBox/ChatBox";
 import TextFieldInput from "../components/TextField/TextField";
@@ -19,6 +19,8 @@ interface Chat {
 function ChatPage() {
   const [currentMesssage, setCurrentMessage] = useState<Chat[]>([]);
   const [messageValue, setMessageValue] = useState<string>();
+
+  // const onChange = useCallback(() => {});
 
   const submitChat = () => {
     socket.emit("new-chat", {
@@ -47,7 +49,7 @@ function ChatPage() {
     <Container>
       <ChatBox data={currentMesssage} />
       <TextFieldInput value={messageValue} onChange={onChange}></TextFieldInput>
-      <Button name="Button" onClick={submitChat} />
+      <Button name="Send" onClick={submitChat} />
     </Container>
   );
 }

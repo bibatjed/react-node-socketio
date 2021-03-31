@@ -14,7 +14,7 @@ interface Chat {
   message: string;
 }
 
-export default function ChatBox({ data }: { data: Chat[] }) {
+const ChatBox = React.memo(function ({ data }: { data: Chat[] }) {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
@@ -34,4 +34,6 @@ export default function ChatBox({ data }: { data: Chat[] }) {
       </CardContent>
     </Card>
   );
-}
+});
+
+export default ChatBox;
